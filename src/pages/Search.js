@@ -5,10 +5,17 @@ import { Link } from 'react-router-dom';
 function SearchStudent() {
 
     const [table, setTable] = useState(null);
-
+    let user = JSON.parse(localStorage.getItem('user-info'))
+    let x = user.authorisation.token;
     async function search(key) {
         console.warn(key)
-        let result = await fetch("http://localhost:8000/api/search/"+key);
+        let result = await fetch("http://localhost:8000/api/search/"+key,{
+          method: 'GET',
+          headers: {
+        Authorization: 'Bearer ' + x
+      },
+        }
+        );
         console.log(result);
         result = await result.json();
     

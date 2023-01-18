@@ -11,8 +11,20 @@ const CheckMed = ({userdata}) => {
 
     const [loading, setLoading] = useState(true);
     const [students, setStudents] = useState([]);
+    let user = JSON.parse(localStorage.getItem('user-info'))
 
+    let token = user.authorisation.token;
+  
   useEffect(() => {
+    axios.interceptors.request.use(
+      config => {
+        config.headers.authorization = `Bearer ${token}`
+        return config;
+      },
+      error => {
+        return Promise.reject(error);
+      }
+    );
     axios.get(`/api/medhistory/${x}`).then((res) => {
       if (res.status === 200) {
         setStudents(res.data.meds);
