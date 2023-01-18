@@ -8,20 +8,8 @@ function Guardian() {
   const [guardian, setGuardian] = useState([]);
   const [table, setTable] = useState(null);
 
-  let user = JSON.parse(localStorage.getItem('user-info'))
-
-  let x = user.authorisation.token;
 
   useEffect(() => {
-    axios.interceptors.request.use(
-      config => {
-        config.headers.authorization = `Bearer ${x}`
-        return config;
-      },
-      error => {
-        return Promise.reject(error);
-      }
-    );
     axios.get(`/api/studjoin`).then((res) => {
       if (res.status === 200) {
         setGuardian(res.data.all);
@@ -29,14 +17,11 @@ function Guardian() {
       }
     });
   }, []);
+
   async function search(key) {
-    let result = await fetch("http://localhost:8000/api/join/"+key, {
-      method: 'GET',
-      headers: {
-        Authorization: 'Bearer ' + x
-      },
-    });
-    
+    console.warn(key)
+    let result = await fetch("http://localhost:8000/api/join/"+key);
+    console.log(result);
     result = await result.json();
 
     var student_HTMLTABLE = result.map((item, index) => {

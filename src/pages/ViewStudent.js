@@ -51,21 +51,9 @@ function Dashboard() {
   const [ccms, setCCMS] = useState('');
   const [htm, setHTM] = useState('');
 
-  let user = JSON.parse(localStorage.getItem('user-info'))
 
-  let x = user.authorisation.token;
 
   useEffect(() => {
-    axios.interceptors.request.use(
-      config => {
-        config.headers.authorization = `Bearer ${x}`
-        return config;
-      },
-      error => {
-        return Promise.reject(error);
-      }
-    )
-
     axios.get(`/api/students`).then((res) => {
       if (res.status === 200) {
         setStudents(res.data.students);

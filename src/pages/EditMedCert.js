@@ -26,10 +26,7 @@ const EditMedCert = ({userdata}) => {
         const data = {
             fname: MedInput.fname || state.fname,
             lname: MedInput.lname || state.lname,
-            date: MedInput.date || state.date,
             verdict: MedInput.verdict || state.verdict,
-            purpose: MedInput.purpose || state.purpose,
-            diagnosis: MedInput.diagnosis || state.diagnosis,
             doctor: MedInput.doctor || state.doctor,
             uid: MedInput.uid || state.uid,
         }
@@ -72,11 +69,6 @@ const EditMedCert = ({userdata}) => {
                     <span className="text-danger">{errorInput.lname}</span>
                 </div>
                 <div className="form-group mb-3">
-                    <label>Purpose</label>
-                    <input type="text" style={{ height:50 }} name="purpose" onChange={(e) => handleInput(e)} value={MedInput.purpose}  className="form-control" disabled/>
-                    <span className="text-danger">{errorInput.purpose}</span>
-                </div>
-                <div className="form-group mb-3">
                     <label>Verdict</label>
                     <select type="text"  name="verdict" onChange={(e) => handleInput(e)}  value={MedInput.verdict} className="form-control">
                         <option value="TBA">TBA</option>
@@ -84,15 +76,6 @@ const EditMedCert = ({userdata}) => {
                         <option value="is not Allowed">is not Allowed</option>
                     </select>
                     <span className="text-danger">{errorInput.verdict}</span>
-                </div>
-                <div className="form-group mb-3">
-                    <label>Date Issued</label>
-                    <input type="date" name="date" onChange={(e) => handleInput(e)}  value={MedInput.date} className="form-control"/>
-                </div>
-                <div className="form-group mb-3">
-                    <label>Diagnosis</label>
-                    <input style={{ height:50 }} type="text" name="diagnosis" onChange={(e) => handleInput(e)} value={MedInput.diagnosis} className="form-control"/>
-                    <span className="text-danger">{errorInput.diagnosis}</span>
                 </div>
                 <div className="form-group mb-3">
                     <label>Doctor in Charge</label>

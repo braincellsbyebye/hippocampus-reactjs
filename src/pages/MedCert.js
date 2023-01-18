@@ -48,10 +48,7 @@ function MedCert() {
           <td>{item.id}</td>
           <td>{item.fname}</td>
           <td>{item.lname}</td>
-          <td>{item.purpose}</td>
           <td>{item.verdict}</td>
-          <td>{item.date}</td>
-          <td>{item.diagnosis}</td>
           <td>{item.doctor}</td>
           <td>{item.uid}</td>
           <td>
@@ -106,10 +103,7 @@ function MedCert() {
               <th>ID</th>
               <th>First Name</th>
               <th>Last Name</th>
-              <th>Purpose</th>
               <th>Decision</th>
-              <th>Date Issued</th>
-              <th>Diagnosis</th>
               <th>Doctor in Charge</th>
               <th>User ID</th>
               <th>Verification</th>

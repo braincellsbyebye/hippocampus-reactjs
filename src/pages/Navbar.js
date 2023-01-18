@@ -1,15 +1,9 @@
 import React from 'react';
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 function Navbar ()
+
 {
-  const history = useNavigate();
-  function logout()
-  {
-    localStorage.clear();
-    history("/")
-  }
-  
   return(
     <div className="pb-6">
         <nav className="navbar navbar-expand-lg bg-info">
@@ -40,7 +34,7 @@ function Navbar ()
                 <Link className="nav-link" to="/userprofile" style={{color:'black', fontSize:20, fontFamily:'serif'}}>Profile</Link>
               </li>
               <li className="nav-item">
-                <button onClick={logout} >Logout</button>
+              <Link className="nav-link" to="/" style={{color:'black', fontSize:20, fontFamily:'serif'}}>Logout</Link>
               </li>
             </ul>
           </div>
