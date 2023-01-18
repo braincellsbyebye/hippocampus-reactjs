@@ -12,7 +12,7 @@ const ClinicPersonnelLogin = () => {
 
   async function login(){
     let item={email, password};
-    let result = await fetch("http://localhost:8000/api/login", {
+    let result = await fetch("http://localhost:8000/api/jwtlogin", {
       method: "POST",
       headers:{
         "Content-Type": "application/json",
@@ -22,10 +22,8 @@ const ClinicPersonnelLogin = () => {
     });
     result = await result.json();
     localStorage.setItem("user-info",JSON.stringify(result))
-    if ("error" in result) {
+    if ("Unauthorized" === result.message) {
       alert("Login Credentials do not match")
-    } else if ("notVerified" in result) {
-        alert("User not Verified!ss");
     } else {
       history("/dashboard")
     }

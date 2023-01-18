@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import axios from "axios";
 import Navbar from "./Navbar";
 
 function AddStudent() {
@@ -19,6 +20,22 @@ function AddStudent() {
   const [cbc, setcbc]=useState("")
   const [uri, seturi]=useState("")
 
+  let user = JSON.parse(localStorage.getItem('user-info'))
+
+  let x = user.authorisation.token;
+
+  useEffect(() => {
+    axios.interceptors.request.use(
+      config => {
+        config.headers.authorization = `Bearer ${x}`
+        return config;
+      },
+      error => {
+        return Promise.reject(error);
+      }
+    )
+  });
+
   async function addstudent(){
     const formData = new FormData();
     formData.append('fname', fname);
@@ -36,11 +53,14 @@ function AddStudent() {
     formData.append('uri', uri);
     let result = await fetch("http://localhost:8000/api/add-student", {
       method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + x
+      },
       body: formData
     });
     console.log(result)
     swal("Success!", "Student Added", "Successfully!")
-    history("/dashboard");
+    history("/dashboard")
   }
   /*const [studentInput, setStudent] = useState({
     fname: "",

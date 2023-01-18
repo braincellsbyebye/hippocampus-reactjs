@@ -6,19 +6,20 @@ import './css/Signup.css';
 const Signup = () => {
 
   const [name, setName]=useState("");
+  const [fname, setfname]=useState("null");
+  const [lname, setlname]=useState("null");
   const [password, setPassword]=useState("");
   const [email, setEmail]=useState("");
-  const [verified, setVerified] = useState("false");
   const [msg, setMsg]=useState("");
   const history = useNavigate();
 
   async function signup(){
-    let item={name,password,email, verified}
+    let item={name,fname,lname,password,email}
     console.warn(item)
     
     const regex = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
     if (regex.test(item.email)) {
-      let result = await fetch("http://localhost:8000/api/register",{
+      let result = await fetch("http://localhost:8000/api/jwtregister",{
       method:'POST',
       body:JSON.stringify(item),
       headers:{
