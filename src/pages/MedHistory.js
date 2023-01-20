@@ -8,9 +8,9 @@ function MedHistory() {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    axios.get(`/api/useraccdetails`).then((res) => {
+    axios.get(`/api/users`).then((res) => {
       if (res.status === 200) {
-        setStudents(res.data.useracc);
+        setStudents(res.data.user);
         setLoading(false);
       }
     });
@@ -25,7 +25,7 @@ function MedHistory() {
       return (
         <tr key={index}>
           <td>{item.id}</td>
-          <td>{item.username}</td>
+          <td>{item.name}</td>
           <td>{item.fname}</td>
           <td>{item.lname}</td>
           <td>{item.email}</td>
@@ -62,6 +62,7 @@ function MedHistory() {
               <th>Username</th>
               <th>First Name</th>
               <th>Last Name</th>
+              <th>test</th>
               <th>Email</th>
               <th>Check Record</th>
             </tr>
