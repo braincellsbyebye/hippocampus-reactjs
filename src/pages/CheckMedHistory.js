@@ -25,9 +25,9 @@ const CheckMed = ({userdata}) => {
         return Promise.reject(error);
       }
     );
-    axios.get(`/api/medhistory/${x}`).then((res) => {
+    axios.get(`/api/mh/${x}`).then((res) => {
       if (res.status === 200) {
-        setStudents(res.data.meds);
+        setStudents(res.data.apt);
         setLoading(false);
       }
     });

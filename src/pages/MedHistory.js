@@ -62,7 +62,6 @@ function MedHistory() {
               <th>Username</th>
               <th>First Name</th>
               <th>Last Name</th>
-              <th>test</th>
               <th>Email</th>
               <th>Check Record</th>
             </tr>
