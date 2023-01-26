@@ -257,7 +257,7 @@ function AddStudent() {
             BACK
           </Link>
             <button type="submit" onClick={addstudent} className="btn btn-primary">
-              Save Student
+              Save
             </button>
           </div>
       </div>

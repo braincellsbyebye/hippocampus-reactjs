@@ -280,7 +280,7 @@ function Dashboard() {
           <td>{item.cvs}</td>
           <td><img src={ "http://localhost:8000/" + item.cbc } className="img-fluid img-bordered" width="200px" alt='alternative'/></td>
           <td><img src={ "http://localhost:8000/" + item.uri } className="img-fluid img-bordered" width="200px" alt='alternative'/></td>
-          <td>
+          {/*<td>
             <Link
               to={"/add-medrec"}
               state={item}
@@ -288,7 +288,7 @@ function Dashboard() {
             >
               Add
             </Link>
-          </td>
+          </td>*/}
           <td>
             <Link
               to={"/add-guardian"}
@@ -415,7 +415,7 @@ function Dashboard() {
               <th>Civil Status</th>
               <th>CBC Image</th>
               <th>Urinalysis Image</th>
-              <th>Add Medical Record</th>
+              {/* <th>Add Medical Record</th> */}
               <th>Add Contact Person</th>
               <th>Edit</th>
             </tr>
